@@ -81,12 +81,12 @@ class Citizen{
         vax = vaccine;
     }
 
-    public void setDose(int x){
-        dose = x;
+    public void setDose(int d){
+        dose = d;
     }
 
-    public void setDueDate(int x){
-        due_date = x;
+    public void setDueDate(int date){
+        due_date = date;
     }
 
     public String getStatus(){
@@ -155,12 +155,12 @@ class Slot{
         return vaccine;
     }
 
-    public void ResetQuantity(){
+    public void resetQuantity(){
         if(quantity < 0) quantity = 0;
     }
 
-    public void DecreaseQuantity(int x){
-        quantity = quantity - x;
+    public void decreaseQuantity(int q){
+        quantity = quantity - q;
     }
 }
 
@@ -209,12 +209,10 @@ public class main{
         int booking_choice;
         int booking_pincode;
         int booking_hospital_id = 0;
-        int slotchoose;
+        int slot_choice;
         LinkedList<Slot> available_slots = new LinkedList<Slot>();
 
         String vax_name = new String();
-        int slotchooseagain;
-        int slotchooseagainagain;
         LinkedList<Hospital> hospitals = new LinkedList<Hospital>();
 
         String pat_id = new String();
@@ -235,8 +233,12 @@ public class main{
                     vaccine_name = scan.nextLine();
                     System.out.print("Number of Doses: ");
                     dose = scan.nextInt();
-                    System.out.print("Gap between Doses: ");
-                    gap = scan.nextInt();
+                    if (dose == 1) gap = 0;
+
+                    else{
+                        System.out.print("Gap between Doses: ");
+                        gap = scan.nextInt();
+                    }
 
                     Vaccine v = new Vaccine(vaccine_name, dose, gap);
                     vaccine_list.add(v);
@@ -376,23 +378,22 @@ public class main{
 
                                             for (int i=0;i<booking_hospital.hospital_slots.size();i++){
                                                 s = booking_hospital.hospital_slots.get(i);
-                                                s.ResetQuantity();
+                                                s.resetQuantity();
                                                 System.out.println(i+"->"+"Day:"+s.getDayNumber()+", Available Quantity: "+s.getQuantity()+", Vaccine: "+ s.getVaccine().getName());
                                             }
 
                                             System.out.print("Choose slot: ");
-                                            slotchoose = scan.nextInt();
-                                            System.out.println(" ");
-                                            Slot ChosenSlot = booking_hospital.hospital_slots.get(slotchoose);
-                                            if(ChosenSlot.getQuantity()>0){
-                                                System.out.println("Slot Booked");
-                                                ChosenSlot.DecreaseQuantity(1);
+                                            slot_choice = scan.nextInt();
+                                            Slot picked_slot = booking_hospital.hospital_slots.get(slot_choice);
+                                            if(picked_slot.getQuantity()>0){
+                                                picked_slot.decreaseQuantity(1);
                                                 cbook.setDose(cbook.getDose()+1);
-                                                cbook.setVax(ChosenSlot.getVaccine());
+                                                cbook.setVax(picked_slot.getVaccine());
 
-                                                if (cbook.getDose()<cbook.getVax().getDoses()) cbook.setDueDate(ChosenSlot.getDayNumber()+ChosenSlot.getVaccine().getGap());
+                                                if (cbook.getDose()<cbook.getVax().getDoses()) cbook.setDueDate(picked_slot.getDayNumber()+picked_slot.getVaccine().getGap());
 
                                                 cbook.setStatus();
+                                                System.out.println(cbook.getName() + " vaccinated with " + cbook.getVax().getName());
                                             }
 
                                             else System.out.println("Slot Unavailable");
@@ -405,7 +406,7 @@ public class main{
 
                                             for (int i=0;i<booking_hospital.hospital_slots.size();i++){
                                                 sbook = booking_hospital.hospital_slots.get(i);
-                                                sbook.ResetQuantity();
+                                                sbook.resetQuantity();
                                                 if (sbook.getDayNumber()>=cbook.getDueDate() && sbook.getVaccine().getName().equals(cbook.getVax().getName()) && sbook.getQuantity()>0){
                                                     available_slots.add(sbook);
                                                 }
@@ -419,16 +420,16 @@ public class main{
 
                                                 }
 
-                                                System.out.print("Enter Slot: ");
-                                                slotchoose = scan.nextInt();
-                                                Slot SlotChosen = available_slots.get(slotchoose);
-                                                System.out.println("Slot Booked");
-                                                SlotChosen.DecreaseQuantity(1);
+                                                System.out.print("Choose slot: ");
+                                                slot_choice = scan.nextInt();
+                                                Slot picked_slot = available_slots.get(slot_choice);
 
                                                 cbook.setDose(cbook.getDose()+1);
-                                                if (cbook.getDose()<cbook.getVax().getDoses()) cbook.setDueDate(SlotChosen.getDayNumber()+cbook.getVax().getGap());
+                                                if (cbook.getDose()<cbook.getVax().getDoses()) cbook.setDueDate(picked_slot.getDayNumber()+cbook.getVax().getGap());
 
                                                 cbook.setStatus();
+                                                System.out.println(cbook.getName() + " vaccinated with " + cbook.getVax().getName());
+                                                picked_slot.decreaseQuantity(1);
                                                 available_slots.clear();
 
                                             }
@@ -473,24 +474,23 @@ public class main{
                                        if (cbook.getDose() == 0){
 
                                            for(int i=0;i<hbook.hospital_slots.size();i++){
-                                               hbook.hospital_slots.get(i).ResetQuantity();
+                                               hbook.hospital_slots.get(i).resetQuantity();
                                                if (hbook.hospital_slots.get(i).getQuantity()>0 && hbook.hospital_slots.get(i).getVaccine().getName().equals(vac.getName())) System.out.println(i + "->" + "Day: " + hbook.hospital_slots.get(i).getDayNumber() + ", Available Quantity: " + hbook.hospital_slots.get(i).getQuantity() + ", Vaccine: " + vac.getName());
                                            }
 
-                                           System.out.print("Enter slot: ");
-                                           slotchooseagain = scan.nextInt();
-                                           System.out.println(" ");
-                                           Slot chosen = hbook.hospital_slots.get(slotchooseagain);
+                                           System.out.print("Choose slot: ");
+                                           slot_choice = scan.nextInt();
+                                           Slot chosen = hbook.hospital_slots.get(slot_choice);
 
                                            if (chosen.getQuantity()>0 ){
-                                               System.out.println("Slot Booked");
-                                               chosen.DecreaseQuantity(1);
+                                               chosen.decreaseQuantity(1);
                                                cbook.setDose(cbook.getDose()+1);
                                                cbook.setVax(chosen.getVaccine());
 
                                                if (cbook.getDose()<cbook.getVax().getDoses()) cbook.setDueDate(chosen.getDayNumber()+chosen.getVaccine().getGap());
 
                                                cbook.setStatus();
+                                               System.out.println(cbook.getName() + " vaccinated with " + cbook.getVax().getName());
                                            }
 
                                            else System.out.println("Slot Unavailable");
@@ -500,33 +500,31 @@ public class main{
                                            Slot sbook = hbook.hospital_slots.get(0);
                                            for (int i=0; i<hbook.hospital_slots.size();i++){
                                                sbook = hbook.hospital_slots.get(i);
-                                               sbook.ResetQuantity();
-                                               System.out.println(sbook.getDayNumber() + " "+ sbook.getVaccine().getName()+ " " + sbook.getQuantity());
+                                               sbook.resetQuantity();
                                                if (sbook.getDayNumber()>=cbook.getDueDate() && sbook.getVaccine().getName().equals(cbook.getVax().getName()) && sbook.getQuantity()>0){
                                                    available_slots.add(sbook);
                                                }
                                            }
 
-                                           System.out.println(available_slots);
                                            if (!available_slots.isEmpty()){
                                                Slot S = available_slots.get(0);
                                                for (int i=0;i<available_slots.size();i++){
                                                    S = available_slots.get(i);
-                                                   S.ResetQuantity();
-                                                   System.out.println(i+"->"+", Day: "+S.getDayNumber()+", Available Quantity"+S.getQuantity()+", Vaccine:"+S.getVaccine().getName());
+                                                   S.resetQuantity();
+                                                   System.out.println(i+"->"+" Day: "+S.getDayNumber()+", Available Quantity"+S.getQuantity()+", Vaccine:"+S.getVaccine().getName());
                                                }
 
-                                               System.out.print("Enter Slot: ");
-                                               slotchooseagainagain = scan.nextInt();
-                                               Slot ChosenOne = available_slots.get(slotchooseagainagain);
-                                               ChosenOne.DecreaseQuantity(1);
+                                               System.out.print("Choose slot: ");
+                                               slot_choice = scan.nextInt();
+                                               Slot picked_slot = available_slots.get(slot_choice);
+                                               picked_slot.decreaseQuantity(1);
                                                cbook.setDose(cbook.getDose()+1);
 
-                                               if (cbook.getDose()<cbook.getVax().getDoses()) cbook.setDueDate(ChosenOne.getDayNumber()+cbook.getVax().getGap());
+                                               if (cbook.getDose()<cbook.getVax().getDoses()) cbook.setDueDate(picked_slot.getDayNumber()+cbook.getVax().getGap());
 
                                                cbook.setStatus();
                                                available_slots.clear();
-                                               System.out.println("Slot Booked");
+                                               System.out.println(cbook.getName() + " vaccinated with " + cbook.getVax().getName());
                                             }
 
                                            else System.out.println("Slot Unavailable");
@@ -556,7 +554,7 @@ public class main{
                     if (hosp.getId() == hos_id){
                         for (int i=0;i<hosp.hospital_slots.size();i++){
                             Slot hslot = hosp.hospital_slots.get(i);
-                            hslot.ResetQuantity();
+                            hslot.resetQuantity();
                             System.out.println("Day: "+ hslot.getDayNumber() + ", Vaccine: " + hslot.getVaccine().getName() + ", Available Quantity: " + hslot.getQuantity());
                         }
                     }
