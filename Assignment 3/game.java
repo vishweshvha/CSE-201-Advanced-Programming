@@ -14,7 +14,7 @@ public class game{
         floor f0 = new empty(0);
         floor f1 = new empty(1);
         floor f2 = new ladder("the Elevator Floor", 2, 8, 4);
-        floor f3 = new empty(3);
+        floor f3 = new cheat(3);
         floor f4 = new empty(4);
         floor f5 = new snake("the Snake Floor", 5, 4, 2);
         floor f6 = new empty(6);
@@ -77,6 +77,7 @@ public class game{
             p.setPoints(f.getPoints());
             p.setPosition(f.getPosition());
             p.printPoints();
+            if(p.getPosition() == 13) break;
         }
 
         System.out.println("--------------------------");

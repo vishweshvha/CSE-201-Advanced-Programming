@@ -10,10 +10,6 @@ public class floor{
     protected int position_factor;
     protected int point_factor;
 
-    public String getType(){
-        return type;
-    }
-
     public int getId(){
         return id;
     }

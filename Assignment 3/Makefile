@@ -6,3 +6,5 @@ all:
 	javac snake.java
 	javac ladder.java
 	javac empty.java
+	javac cheat.java
+
