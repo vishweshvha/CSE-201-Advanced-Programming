@@ -63,7 +63,10 @@ public class game{
                 continue;
             }
 
-            if((dice_value == 1) && (start == 0)) start = 1;
+            if((dice_value == 1) && (start == 0)){
+                start = 1;
+                p.setPosition(-1);
+            }
 
             if((dice_value == 2) && (p.getPosition() == 12)){
                 System.out.println("Player cannot move");
