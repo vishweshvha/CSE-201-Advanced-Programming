@@ -16,7 +16,12 @@ public class calculator{
         Random rand = new Random();
         num1 = rand.nextInt();
         num2 = rand.nextInt();
-        if(num2 == 0) num2 = num2 + 1;
+        try{
+            int ans = num1/num2;
+        }
+        catch(ArithmeticException e){
+            num2 = num2 + 1;
+        }
         System.out.println("Calculate the result of "+num1+" divided by "+num2);
     }
 
@@ -29,13 +34,21 @@ public class calculator{
     }
 
     public int check(int num){
-        if(num == num1/num2) {
-            truth = 1;
-            System.out.println("Correct answer");
+        Scanner scan = new Scanner(System.in);
+        try{
+            if(num == num1/num2) {
+                truth = 1;
+                System.out.println("Correct answer");
+            }
+            else{
+                truth = 0;
+                System.out.println("Incorrect answer");
+            }
         }
-        else{
-            truth = 0;
-            System.out.println("Incorrect answer");
+        catch(InputMismatchException e){
+            scan.nextLine();
+            System.out.println("Invalid Input! Please Enter an Integer.");
+            truth = check(num);
         }
         return truth;
     }

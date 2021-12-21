@@ -7,7 +7,7 @@ import java.util.regex.*;
 public class game{
     public static int tile_number(){
         Random rand = new Random();
-        int value = rand.nextInt(20) + 1;
+        int value = rand.nextInt(21) + 1;
         return value;
     }
     public static int hop(){
@@ -16,6 +16,11 @@ public class game{
         int value = tile_number();
         int ans_num = 0;
         String ans_str;
+        if(value >= 21){
+            System.out.println("You are too energetic and zoomed past all the tiles. Muddy Puddle Splash!");
+            value = 0;
+            return value;
+        }
         System.out.println("You landed on tile "+value);
         if(value%2 == 1){
             System.out.println("Question answer round. Integer or String?");
