@@ -64,6 +64,22 @@ public class Controller implements Initializable {
     @FXML
     Label highScoreHome;
 
+    @FXML
+    public void pause(ActionEvent event) throws IOException {
+        pauseStage = new Stage();
+        pauseRoot = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
+        pauseScene = new Scene(pauseRoot);
+        pauseScene.getStylesheets().add(getClass().getResource("StyleSheet.css").toExternalForm());
+        Image icon = new Image("/assets/logo.png");
+        pauseStage.getIcons().add(icon);
+        pauseStage.setScene(pauseScene);
+        pauseStage.initStyle(StageStyle.UNDECORATED);
+        pauseStage.setResizable(false);
+        pauseStage.initModality(Modality.APPLICATION_MODAL);
+        pauseStage.initOwner(pauseButton.getScene().getWindow());
+        pauseStage.showAndWait();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //translate/bounce
@@ -138,22 +154,6 @@ public class Controller implements Initializable {
         translate7.setByY(-2);
         translate7.setAutoReverse(true);
         translate7.play();
-    }
-
-    @FXML
-    public void pause(ActionEvent event) throws IOException {
-        pauseStage = new Stage();
-        pauseRoot = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
-        pauseScene = new Scene(pauseRoot);
-        pauseScene.getStylesheets().add(getClass().getResource("StyleSheet.css").toExternalForm());
-        Image icon = new Image("/assets/logo.png");
-        pauseStage.getIcons().add(icon);
-        pauseStage.setScene(pauseScene);
-        pauseStage.initStyle(StageStyle.UNDECORATED);
-        pauseStage.setResizable(false);
-        pauseStage.initModality(Modality.APPLICATION_MODAL);
-        pauseStage.initOwner(pauseButton.getScene().getWindow());
-        pauseStage.showAndWait();
     }
 
     public void resume(ActionEvent event){
