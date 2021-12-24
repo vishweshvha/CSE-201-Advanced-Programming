@@ -1,0 +1,21 @@
+#pauseButton{
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+#startPage{
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+#pauseWindow{
+    -fx-background-color: #A4DE02;
+}
+
+#highScoreWindow{
+    -fx-background-color: #A4DE02;
+}
+
+#revivePane{
+    -fx-background-color: #A4DE02;
+}

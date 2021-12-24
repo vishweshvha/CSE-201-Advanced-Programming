@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Scene1Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <ImageView fitHeight="510.0" fitWidth="1849.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/background.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="79.0" fitWidth="352.0" layoutX="-9.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Island4.png" />
+         </image>
+      </ImageView>
+      <Group fx:id="heroAndWeapon" layoutX="135.0" layoutY="268.0">
+         <children>
+            <ImageView fitHeight="54.0" fitWidth="58.0" layoutX="4.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Queen.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="18.0" fitWidth="26.0" layoutX="32.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Kunai.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <Button fx:id="pauseButton" layoutX="30.0" layoutY="14.0" mnemonicParsing="false" onAction="#pause" prefHeight="32.0" prefWidth="33.0" textFill="TRANSPARENT">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Setting.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="104.0" fitWidth="275.0" layoutX="321.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Island3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="32.0" fitWidth="26.0" layoutX="571.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Coin.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="596.0" layoutY="27.0" prefHeight="27.0" prefWidth="14.0" text="4" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="313.0" layoutY="32.0" text="23" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="218.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/TNT.png" />
+         </image>
+      </ImageView>
+      <Group fx:id="coinBunch2" layoutX="353.0" layoutY="259.0">
+         <children>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="-12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <Group fx:id="coinBunch1" layoutX="329.0" layoutY="137.0">
+         <children>
+            <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="30.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="30.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="94.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="62.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="93.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Coin.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="518.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Island5.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mediumOrc" fitHeight="53.0" fitWidth="67.0" layoutX="550.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/RedOrc.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="552.0" layoutY="428.0" mnemonicParsing="false" onAction="#playScene3" text="Next Scene" />
+   </children>
+</AnchorPane>
